@@ -22,7 +22,27 @@
 
   <div class="form-group">
     <%= f.label :category %><br>
-    <%= f.text_field :category, class: "form-control" %>
+    <%= f.select :category, options_for_select([
+    ['NewBorn'], 
+    ['Child'],
+    ['Family'],
+    ['High School Seniors'],
+    ['Engagement'],
+    ['Wedding'],
+    ['Maternity'],
+    ['Bar & Bat Mitzvah'],
+    ['Food'],
+    ['Headshots'],
+    ['Pets'],
+    ['Sports'],
+    ['Birthday'],
+    ['Real Estate'],
+    ['Boudoir'],
+    ['Landscape'],
+    ['Commercial & Product'],
+    ['Fashion'],
+    ['Art']]) %>
+    
     <%= f.hidden_field :photographer_id, value: current_photographer.id %>
   </div>
   <div class="actions">

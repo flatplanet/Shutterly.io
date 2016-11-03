@@ -8,23 +8,44 @@ Name: <%= @whatevs.first_name %> <%= @whatevs.last_name %><br/>
 Email Address: <%= @whatevs.email %><br/>
 Zipcode: <%= @whatevs.zipcode %><br/><br/>
 
-<ul>
+
 
 <br/><br/>
-<% @whatevs.photographs.inspect %>
-<% @whatevs.photographs.each do |photos| %>
-        <li>
-            <%= image_tag photos.image.url(:medium) %><br/>
-            <%= photos.category %> 
-            | <%= link_to "Show", controller: "photographs", action: "show", id: photos.id   %> 
-            <% if photographer_signed_in? %>
-                <% if current_photographer.id == photos.photographer_id %>
-                    | <%= link_to 'Edit', edit_photograph_path(photos.id) %> 
-                    | <%= link_to 'Destroy', photograph_path(photos.id), method: :delete, data: { confirm: 'Are you sure?' } %> |
-                <% end %>
-            <% end %>
-        </li>
-    <% end %>
-</ul>    
 
-<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% @whatevs.photographs.inspect %>
+
+<div id="photographs" class="transitions-enabled">
+    <% @whatevs.photographs.each do |photos| %>
+        <div class="box">
+        <div class="panel panel-default">
+            <%= link_to image_tag(photos.image.url(:medium)), photos %><br/>
+                <div class="panel-body">
+                    Category: <%= photos.category %> 
+                </div>
+                
+                <div class="panel-footer"> 
+                        <% if photographer_signed_in? %>
+                            <% if current_photographer.id == photos.photographer_id %>
+                                 <%= link_to 'Edit', edit_photograph_path(photos.id) %> 
+                                | <%= link_to 'Destroy', photograph_path(photos.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                            <% end %>
+                        <% end %>
+                        
+                </div>
+             </div>
+        </div>
+    <% end %>
+</div>
