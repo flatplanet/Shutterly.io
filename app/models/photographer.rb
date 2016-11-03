@@ -6,4 +6,6 @@ class Photographer < ActiveRecord::Base
   validates :user_name, uniqueness: true
   validates :zipcode, numericality: {greater_than_or_equal_to: 0.01}
   validates :zipcode, length: { is: 5 }
+  
+  has_many :photographs
 end

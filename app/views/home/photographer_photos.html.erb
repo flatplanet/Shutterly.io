@@ -1,0 +1,28 @@
+<h1><%= @item.titleize %>'s Photographs</h1>
+<%= link_to "Add Photo", new_photograph_path %> |
+<%= link_to "Show Photos", photographs_path %>
+<br/><br/>
+
+<h4>Profile Information:</h4>
+Name: <%= @whatevs.first_name %> <%= @whatevs.last_name %><br/>
+Email Address: <%= @whatevs.email %><br/>
+Zipcode: <%= @whatevs.zipcode %><br/><br/>
+
+<ul>
+
+<br/><br/>
+<% @whatevs.photographs.inspect %>
+<% @whatevs.photographs.each do |photos| %>
+        <li><%= photos.category %> 
+            | <%= link_to "Show", controller: "photographs", action: "show", id: photos.id   %> 
+            <% if photographer_signed_in? %>
+                <% if current_photographer.id == photos.photographer_id %>
+                    | <%= link_to 'Edit', edit_photograph_path(photos.id) %> 
+                    | <%= link_to 'Destroy', photograph_path(photos.id), method: :delete, data: { confirm: 'Are you sure?' } %> |
+                <% end %>
+            <% end %>
+        </li>
+    <% end %>
+</ul>    
+
+<br/>

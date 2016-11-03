@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102190206) do
+ActiveRecord::Schema.define(version: 20161103171544) do
 
   create_table "photographers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20161102190206) do
 
   add_index "photographers", ["email"], name: "index_photographers_on_email", unique: true
   add_index "photographers", ["reset_password_token"], name: "index_photographers_on_reset_password_token", unique: true
+
+  create_table "photographs", force: :cascade do |t|
+    t.string   "category"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "photographer_id"
+  end
+
+  add_index "photographs", ["photographer_id"], name: "index_photographs_on_photographer_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
