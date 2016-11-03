@@ -1,4 +1,7 @@
-<%= form_for(@photograph) do |f| %>
+
+<%= if @photograph.image.url == "/images/original/missing.png" then "" else image_tag @photograph.image.url(:medium) end %><br/><br/>
+
+<%= form_for @photograph, html: { multipart: true } do |f| %>
   <% if @photograph.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@photograph.errors.count, "error") %> prohibited this photograph from being saved:</h2>
@@ -11,12 +14,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+    
+
+  <div class="form-group">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.text_field :category, class: "form-control" %>
     <%= f.hidden_field :photographer_id, value: current_photographer.id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", class: 'btn btn-primary' %>
   </div>
 <% end %>

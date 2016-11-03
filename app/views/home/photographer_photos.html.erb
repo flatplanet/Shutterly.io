@@ -13,7 +13,9 @@ Zipcode: <%= @whatevs.zipcode %><br/><br/>
 <br/><br/>
 <% @whatevs.photographs.inspect %>
 <% @whatevs.photographs.each do |photos| %>
-        <li><%= photos.category %> 
+        <li>
+            <%= image_tag photos.image.url(:medium) %><br/>
+            <%= photos.category %> 
             | <%= link_to "Show", controller: "photographs", action: "show", id: photos.id   %> 
             <% if photographer_signed_in? %>
                 <% if current_photographer.id == photos.photographer_id %>

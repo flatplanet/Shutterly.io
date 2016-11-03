@@ -1,9 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Showing Photograph</h3>
+  </div>
+  <div class="panel-body">
+
+<%= image_tag @photograph.image.url(:medium) %><br/><br/>
+
 
 <p>
   <strong>Category:</strong>
   <%= @photograph.category %>
 </p>
 
-<%= link_to 'Edit', edit_photograph_path(@photograph) %> |
-<%= link_to 'Back', photographs_path %>
+
+</div>
+    <div class="panel-footer">
+    <%= link_to 'Edit', edit_photograph_path(@photograph) %> 
+
+    </div>
+</div>
+
