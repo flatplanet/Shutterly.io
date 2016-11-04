@@ -4,9 +4,14 @@ class HomeController < ApplicationController
   
   def photographer_photos
     @item = params['item']
-    @whatevs = Photographer.find_by(user_name: @item)  
-    @photos = Photograph.all
-    @photographers = Photographer.all  
+    @whatevs = Photographer.find_by(user_name: @item)
+    @yup = @whatevs.photographs.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
+    #@photos = Photograph.all
+    #@photographers = Photographer.all
+    #@photos = Photograph.find_by(user_name: @whatevs.id)
+    
+    #@photos = Photograph.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
+    
   end
   
   def photographs

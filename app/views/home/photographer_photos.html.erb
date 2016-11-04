@@ -12,23 +12,10 @@ Zipcode: <%= @whatevs.zipcode %><br/><br/>
 
 <br/><br/>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <% @whatevs.photographs.inspect %>
 
 <div id="photographs" class="transitions-enabled">
-    <% @whatevs.photographs.each do |photos| %>
+    <% @yup.each do |photos| %>
         <div class="box">
         <div class="panel panel-default">
             <%= link_to image_tag(photos.image.url(:medium)), photos %><br/>
@@ -40,4 +27,10 @@ Zipcode: <%= @whatevs.zipcode %><br/><br/>
              </div>
         </div>
     <% end %>
+</div>
+
+
+<br/><br/>
+<div class="center">
+    <%= will_paginate @yup, renderer: BootstrapPagination::Rails %>
 </div>
