@@ -11,5 +11,9 @@ class HomeController < ApplicationController
   def photographs
   end
   
+  def search_photographers
+    @stuff = Photographer.near("62263", 500)
+  end
+  
   
 end

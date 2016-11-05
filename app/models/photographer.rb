@@ -8,4 +8,9 @@ class Photographer < ActiveRecord::Base
   validates :zipcode, length: { is: 5 }
   
   has_many :photographs
+
+  # Search Zipcodes by Lat and Long  
+  geocoded_by :zipcode
+  after_validation :geocode
+
 end

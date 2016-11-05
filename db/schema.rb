@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103174441) do
+ActiveRecord::Schema.define(version: 20161105163031) do
 
   create_table "photographers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20161103174441) do
     t.string   "last_name"
     t.integer  "zipcode"
     t.string   "user_name"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "photographers", ["email"], name: "index_photographers_on_email", unique: true

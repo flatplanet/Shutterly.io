@@ -1,0 +1,11 @@
+<h1>Search Photographers</h1>
+<%= @stuff.inspect %>
+<ul>
+        <% @stuff.each do |stuff| %>
+            <li>
+                <%= stuff.first_name %> 
+                <%= stuff.last_name %> | Zipcode: 
+                <%= stuff.zipcode %>
+            </li>
+        <% end %>
+    </ul>        

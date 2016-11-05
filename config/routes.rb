@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :photographers
   devise_for :users
   get 'home/index'
+  get 'home/search/search_photographers', to: "home#search_photographers"
   root 'home#index'
   
   get '/(:item)', to: "home#photographer_photos", as: 'photographer_photos'
